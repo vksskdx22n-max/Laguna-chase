@@ -10,8 +10,7 @@
 body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
   display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
   min-height:100vh;overflow-y:auto;overflow-x:hidden;user-select:none;}
-#wrap{display:flex;flex-direction:column;align-items:center;gap:3px;width:1100px;max-width:100vw;}
-#canvas-shell{transform-origin:top center;width:1100px;}
+#wrap{display:flex;flex-direction:column;align-items:center;gap:3px;width:1100px;transform-origin:top center;}
 #title{font-size:14px;color:#f4d03f;text-shadow:0 0 16px #f4d03f,0 0 32px #ff8c00;
   text-align:center;line-height:1.8;animation:blink 2s ease-in-out infinite;padding:2px 0;}
 #title small{display:block;font-size:9px;color:#00e5ff;margin-top:1px;}
@@ -75,7 +74,7 @@ body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
     <div class="zs"    id="z2">⛽ C.PETROLI</div>
     <div class="zs"    id="z3">🌊 C.MELISON</div>
   </div>
-  <div id="canvas-shell" style="position:relative;">
+  <div style="position:relative;width:1100px;max-width:100vw;">
     <canvas id="gc" width="1100" height="580"></canvas>
 
     <div class="ov" id="ovStart">
@@ -1450,22 +1449,23 @@ G.state='idle';
 gameLoop();
 
 /* =====================================================
-   RESPONSIVE SCALE — canvas si adatta allo schermo
+   RESPONSIVE SCALE — tutto il wrap scala proporzionalmente
    ===================================================== */
 (function(){
   var GAME_W=1100;
-  var shell=document.getElementById('canvas-shell');
   var wrap=document.getElementById('wrap');
   function scaleGame(){
     var avail=Math.min(window.innerWidth, document.documentElement.clientWidth);
     var scale=avail>=GAME_W ? 1 : avail/GAME_W;
-    shell.style.transform='scale('+scale+')';
-    shell.style.marginBottom=scale<1 ? (580*(scale-1))+'px' : '0';
-    wrap.style.width=(GAME_W*scale)+'px';
+    wrap.style.transform='scale('+scale+')';
+    // aggiusta l'altezza occupata nel documento
+    var wrapH=wrap.offsetHeight;
+    document.body.style.minHeight=(wrapH*scale)+'px';
+    wrap.style.marginBottom=((wrapH*scale)-wrapH)+'px';
   }
   scaleGame();
   window.addEventListener('resize', scaleGame);
-  window.addEventListener('orientationchange', function(){ setTimeout(scaleGame,200); });
+  window.addEventListener('orientationchange', function(){ setTimeout(scaleGame,300); });
 })();
 </script>
 </body>
