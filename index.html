@@ -10,7 +10,7 @@
 body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
   display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
   min-height:100vh;overflow-y:auto;overflow-x:hidden;user-select:none;}
-#wrap{display:flex;flex-direction:column;align-items:center;gap:3px;width:1100px;transform-origin:top center;}
+#wrap{display:flex;flex-direction:column;align-items:center;gap:3px;width:1100px;}
 #title{font-size:14px;color:#f4d03f;text-shadow:0 0 16px #f4d03f,0 0 32px #ff8c00;
   text-align:center;line-height:1.8;animation:blink 2s ease-in-out infinite;padding:2px 0;}
 #title small{display:block;font-size:9px;color:#00e5ff;margin-top:1px;}
@@ -1448,24 +1448,17 @@ for(var _r=0;_r<ROWS;_r++){G.walls[_r]=[];for(var _c=0;_c<COLS;_c++)G.walls[_r][
 G.state='idle';
 gameLoop();
 
-/* =====================================================
-   RESPONSIVE SCALE — tutto il wrap scala proporzionalmente
-   ===================================================== */
 (function(){
   var GAME_W=1100;
   var wrap=document.getElementById('wrap');
   function scaleGame(){
-    var avail=Math.min(window.innerWidth, document.documentElement.clientWidth);
-    var scale=avail>=GAME_W ? 1 : avail/GAME_W;
-    wrap.style.transform='scale('+scale+')';
-    // aggiusta l'altezza occupata nel documento
-    var wrapH=wrap.offsetHeight;
-    document.body.style.minHeight=(wrapH*scale)+'px';
-    wrap.style.marginBottom=((wrapH*scale)-wrapH)+'px';
+    var avail=Math.min(window.innerWidth,document.documentElement.clientWidth);
+    var scale=avail>=GAME_W?1:avail/GAME_W;
+    wrap.style.zoom=scale;
   }
   scaleGame();
-  window.addEventListener('resize', scaleGame);
-  window.addEventListener('orientationchange', function(){ setTimeout(scaleGame,300); });
+  window.addEventListener('resize',scaleGame);
+  window.addEventListener('orientationchange',function(){setTimeout(scaleGame,300);});
 })();
 </script>
 </body>
