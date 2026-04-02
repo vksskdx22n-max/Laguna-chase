@@ -8,47 +8,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  min-height:100vh;overflow:hidden;user-select:none;}
-#wrap{display:flex;flex-direction:column;align-items:center;gap:5px;width:1100px;max-width:100vw;}
-#title{font-size:12px;color:#f4d03f;text-shadow:0 0 16px #f4d03f,0 0 32px #ff8c00;
-  text-align:center;line-height:2;animation:blink 2s ease-in-out infinite;padding:4px 0;}
-#title small{display:block;font-size:8px;color:#00e5ff;margin-top:2px;}
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  min-height:100vh;overflow-y:auto;overflow-x:hidden;user-select:none;}
+#wrap{display:flex;flex-direction:column;align-items:center;gap:3px;width:1100px;max-width:100vw;}
+#canvas-shell{transform-origin:top center;width:1100px;}
+#title{font-size:14px;color:#f4d03f;text-shadow:0 0 16px #f4d03f,0 0 32px #ff8c00;
+  text-align:center;line-height:1.8;animation:blink 2s ease-in-out infinite;padding:2px 0;}
+#title small{display:block;font-size:9px;color:#00e5ff;margin-top:1px;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.72}}
 #hud{display:flex;justify-content:space-between;align-items:center;width:100%;
-  padding:5px 14px;background:rgba(0,180,216,.06);border:1px solid rgba(0,229,255,.25);}
-.hb{display:flex;flex-direction:column;gap:3px;}
-.hl{color:rgba(0,229,255,.55);font-size:7px;}
-.hv{color:#f4d03f;font-size:11px;}
-#lv{color:#ff6b35;font-size:13px;}
+  padding:3px 14px;background:rgba(0,180,216,.06);border:1px solid rgba(0,229,255,.25);}
+.hb{display:flex;flex-direction:column;gap:2px;}
+.hl{color:rgba(0,229,255,.55);font-size:8px;}
+.hv{color:#f4d03f;font-size:12px;}
+#lv{color:#ff6b35;font-size:14px;}
 #zbar{width:100%;display:flex;gap:3px;}
-.zs{flex:1;height:20px;display:flex;align-items:center;justify-content:center;font-size:7px;
+.zs{flex:1;height:20px;display:flex;align-items:center;justify-content:center;font-size:9px;
   border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.3);background:rgba(0,0,0,.5);}
 .zs.on{border-color:#00e5ff;color:#00e5ff;animation:zp .8s alternate infinite;}
 .zs.ok{border-color:#00ff88;color:#00ff88;}
 @keyframes zp{from{background:rgba(0,229,255,.04)}to{background:rgba(0,229,255,.22)}}
 #gc{border:2px solid #00e5ff;box-shadow:0 0 24px rgba(0,229,255,.35);display:block;cursor:crosshair;}
-#infobox{width:100%;padding:6px 12px;background:rgba(0,0,20,.92);border:1px solid rgba(0,229,255,.22);
-  font-size:8px;line-height:2.1;color:#fff;display:flex;flex-direction:column;gap:3px;}
-.in{color:#00e5ff;font-size:9px;}
-.it{color:#f4d03f;font-size:7px;}
+#infobox{width:100%;padding:3px 12px;background:rgba(0,0,20,.92);border:1px solid rgba(0,229,255,.22);
+  font-size:10px;color:#fff;display:flex;flex-direction:row;align-items:center;gap:0;flex-wrap:nowrap;overflow:hidden;white-space:nowrap;}
+.in{color:#00e5ff;font-size:11px;flex-shrink:0;}
+.it{color:#f4d03f;font-size:9px;flex-shrink:1;overflow:hidden;text-overflow:ellipsis;}
 .ov{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,6,20,.96);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:16px;z-index:100;text-align:center;padding:20px;}
-.ot{font-size:15px;text-shadow:0 0 18px currentColor;animation:blink 1.4s infinite;line-height:2;}
-.od{font-size:8px;color:rgba(255,255,255,.85);line-height:2.5;max-width:640px;}
-.sc{font-size:15px;color:#f4d03f;text-shadow:0 0 12px #f4d03f;}
-.btn{font-family:'Press Start 2P',monospace;font-size:11px;padding:14px 28px;
+  gap:14px;z-index:100;text-align:center;padding:20px;}
+.ot{font-size:20px;text-shadow:0 0 18px currentColor;animation:blink 1.4s infinite;line-height:2;}
+.od{font-size:11px;color:rgba(255,255,255,.85);line-height:2.5;max-width:640px;}
+.sc{font-size:18px;color:#f4d03f;text-shadow:0 0 12px #f4d03f;}
+.btn{font-family:'Press Start 2P',monospace;font-size:13px;padding:12px 28px;
   background:transparent;border:2px solid #00e5ff;color:#00e5ff;cursor:pointer;
   text-shadow:0 0 8px #00e5ff;animation:blink 1s step-end infinite;}
 .btn:hover,.btn:active{background:rgba(0,229,255,.18);}
 #tc{width:100%;display:flex;justify-content:space-between;align-items:center;
-  padding:7px 14px;background:rgba(0,0,0,.55);border:1px solid rgba(0,229,255,.12);}
-.tb{font-family:'Press Start 2P',monospace;font-size:20px;width:76px;height:76px;
+  padding:4px 14px;background:rgba(0,0,0,.55);border:1px solid rgba(0,229,255,.12);}
+.tb{font-family:'Press Start 2P',monospace;font-size:16px;width:58px;height:58px;
   background:rgba(0,229,255,.07);border:2px solid rgba(0,229,255,.4);color:#00e5ff;
   border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:3px;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
-.tb span{font-size:7px;opacity:.7;}
+  gap:2px;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.tb span{font-size:6px;opacity:.7;}
 .tb.on{background:rgba(0,229,255,.3);border-color:#00e5ff;}
 @keyframes rotA{0%{transform:rotate(0)}50%{transform:rotate(90deg)}100%{transform:rotate(0)}}
 </style>
@@ -74,7 +75,7 @@ body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
     <div class="zs"    id="z2">⛽ C.PETROLI</div>
     <div class="zs"    id="z3">🌊 C.MELISON</div>
   </div>
-  <div style="position:relative;width:1100px;max-width:100vw;">
+  <div id="canvas-shell" style="position:relative;">
     <canvas id="gc" width="1100" height="580"></canvas>
 
     <div class="ov" id="ovStart">
@@ -86,8 +87,8 @@ body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
         Poi acchiappa il <b style="color:#c8e8ff">BRANZINO</b> che scappa furbo!<br><br>
         I <b style="color:#ffdd00">GRANCHI DORATI</b> spaventano le <b style="color:#ff88ff">MEDUSE</b> per 6 secondi!
       </div>
-      <button class="btn" id="bStart">► CALA LA LENZA ◄</button>
-      <div style="font-size:7px;color:rgba(0,229,255,.5)">FRECCE / WASD — TRACKPAD 2 DITA — DRAG MOUSE — TOUCH</div>
+      <button class="btn" id="bStart">► LANCIA IL JERK ◄</button>
+      <div style="font-size:10px;color:rgba(0,229,255,.5)">FRECCE / WASD — TRACKPAD 2 DITA — DRAG MOUSE — TOUCH</div>
     </div>
     <div class="ov" id="ovGO" style="display:none">
       <div class="ot" style="color:#ff6b35">IL BRANZINO E SCAPPATO! 🐟</div>
@@ -106,7 +107,7 @@ body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
     <div class="ov" id="ovZone" style="display:none">
       <div class="ot" id="ztName" style="color:#00e5ff"></div>
       <div class="od" id="ztDesc"></div>
-      <div style="font-size:8px;color:#00ff88;animation:blink .9s infinite">— PREMI UN TASTO PER CONTINUARE —</div>
+      <div style="font-size:12px;color:#00ff88;animation:blink .9s infinite">— PREMI UN TASTO PER CONTINUARE —</div>
     </div>
     <!-- PAUSA -->
     <div class="ov" id="ovPause" style="display:none">
@@ -118,7 +119,9 @@ body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
   </div>
   <div id="infobox">
     <div class="in" id="iName">⚓ MORANZANI — Acque calme!</div>
-    <div id="iDesc" style="font-size:8px;">Mangia i granchi blu poi acchiappa il branzino!</div>
+    <div style="color:rgba(255,255,255,.3);padding:0 8px;flex-shrink:0;">|</div>
+    <div id="iDesc" style="font-size:12px;flex-shrink:0;">Mangia i granchi blu poi acchiappa il branzino!</div>
+    <div style="color:rgba(255,255,255,.3);padding:0 8px;flex-shrink:0;">|</div>
     <div class="it" id="iTip">💡 Il granchio blu e una specie invasiva arrivata dall'Atlantico!</div>
   </div>
   <div id="tc">
@@ -456,8 +459,8 @@ function makeEnt(r,c,spd){
 
 function stepEnt(e,wantD){
   if(!e.moving){
-    /* try wantD first, then keep current dir */
-    var opts=[wantD,e.dir];
+    /* prova wantD, poi mantieni dir corrente — nessun movimento autonomo */
+    var opts=[wantD, e.dir];
     for(var i=0;i<opts.length;i++){
       var d=opts[i];
       if(d<0||d>3)continue;
@@ -467,6 +470,8 @@ function stepEnt(e,wantD){
         break;
       }
     }
+    // se ancora fermo, memorizza wantD così riparte appena la via è libera
+    if(!e.moving) e.dir=wantD;
   }
   if(e.moving){
     e.prog+=e.spd;
@@ -474,7 +479,7 @@ function stepEnt(e,wantD){
       e.r+=e.dr;e.c+=e.dc;
       e.x=cx(e.c);e.y=cy(e.r);
       e.moving=false;e.prog=0;
-      /* try wantD immediately on arrival */
+      /* all'arrivo tenta subito wantD, poi dir corrente */
       if(!isWall(e.r+DR[wantD],e.c+DC[wantD])){
         e.dir=wantD;e.dr=DR[wantD];e.dc=DC[wantD];
         e.moving=true;e.prog=0;
@@ -1200,7 +1205,7 @@ function drawFish(){
 function drawTopStrip(){
   var z=ZONES[G.zone];
   ctx.fillStyle='rgba(0,0,15,.92)';ctx.fillRect(0,0,CW,YOFF);
-  ctx.fillStyle=z.col;ctx.font='bold 9px "Press Start 2P"';ctx.textAlign='left';
+  ctx.fillStyle=z.col;ctx.font='bold 13px "Press Start 2P"';ctx.textAlign='left';
   ctx.shadowColor=z.col;ctx.shadowBlur=8;
   ctx.fillText('SPOT: '+z.name,10,32);ctx.shadowBlur=0;
   /* progress bar */
@@ -1208,13 +1213,13 @@ function drawTopStrip(){
   ctx.fillStyle='rgba(0,0,0,.5)';ctx.fillRect(240,14,200,14);
   ctx.fillStyle='#4488ff';ctx.fillRect(240,14,200*prog,14);
   ctx.strokeStyle='#4488ff';ctx.lineWidth=1;ctx.strokeRect(240,14,200,14);
-  ctx.fillStyle='#fff';ctx.font='bold 7px "Press Start 2P"';
+  ctx.fillStyle='#fff';ctx.font='bold 11px "Press Start 2P"';
   var fishNames=['GRANCHIO BLU!','ORATA!','POLPO!','BRANZINO BOSS!'];
   ctx.fillText(G.fish.on?'ACCHIAPPA IL '+fishNames[G.zone]:'GRANCHI: '+G.eatenP+'/'+G.totalP,242,32);
   /* frightened — messaggio grande e lampeggiante */
   if(G.frTimer>0){
     ctx.save();
-    ctx.font='bold 8px "Press Start 2P"';
+    ctx.font='bold 16px "Press Start 2P"';
     ctx.textAlign='center';
     ctx.globalAlpha=0.7+0.3*Math.sin(G.frame*0.3);
     ctx.fillStyle='#00ccff';
@@ -1228,7 +1233,7 @@ function drawTopStrip(){
     var fd=Math.round(Math.sqrt(dx*dx+dy*dy));
     var fc=fd<TW*2?'#ff6b35':'#f4d03f';
     ctx.fillStyle=fc;ctx.textAlign='right';ctx.shadowColor=fc;ctx.shadowBlur=6;
-    ctx.font='bold 8px "Press Start 2P"';
+    ctx.font='bold 16px "Press Start 2P"';
     ctx.fillText('DIST '+fd,CW-10,32);ctx.shadowBlur=0;
   }
 }
@@ -1247,7 +1252,7 @@ function drawEffects(){
   for(var i=0;i<G.floats.length;i++){
     var f=G.floats[i];
     ctx.save();ctx.globalAlpha=f.life;ctx.fillStyle=f.col;
-    ctx.font='bold 9px "Press Start 2P"';ctx.textAlign='center';
+    ctx.font='bold 13px "Press Start 2P"';ctx.textAlign='center';
     ctx.shadowColor=f.col;ctx.shadowBlur=10;
     ctx.fillText(f.txt,f.x,f.y);ctx.restore();
   }
@@ -1260,7 +1265,7 @@ function draw(){
     drawFish();drawMeduse();drawPlayer();
     drawEffects();drawTopStrip();
     if(G.fish.on){
-      ctx.save();ctx.font='bold 12px "Press Start 2P"';ctx.fillStyle='#f4d03f';
+      ctx.save();ctx.font='bold 16px "Press Start 2P"';ctx.fillStyle='#f4d03f';
       ctx.textAlign='center';ctx.shadowColor='#f4d03f';ctx.shadowBlur=18;
       ctx.globalAlpha=.55+.45*Math.sin(G.frame*.28);
       ctx.fillText('ACCHIAPPA '+['IL GRANCHIO!','L\'ORATA!','IL POLPO!','IL BRANZINO!'][G.zone],CW/2,CH-16);
@@ -1369,7 +1374,9 @@ document.addEventListener('keydown',function(e){
 var _wAccX=0, _wAccY=0, _wCooldown=false;
 document.addEventListener('wheel', function(e){
   e.preventDefault();
-  if(_wCooldown) return;
+  // se la barca è ferma non applicare cooldown — riprova subito
+  var boatStopped = G.player && !G.player.moving;
+  if(_wCooldown && !boatStopped) return;
   if(G.state==='paused') resumeZone();
   getAC();
   _wAccX += e.deltaX;
@@ -1441,6 +1448,25 @@ G.pellets=[];G.powers=[];G.fishSpots=[];G.walls=[];
 for(var _r=0;_r<ROWS;_r++){G.walls[_r]=[];for(var _c=0;_c<COLS;_c++)G.walls[_r][_c]=false;}
 G.state='idle';
 gameLoop();
+
+/* =====================================================
+   RESPONSIVE SCALE — canvas si adatta allo schermo
+   ===================================================== */
+(function(){
+  var GAME_W=1100;
+  var shell=document.getElementById('canvas-shell');
+  var wrap=document.getElementById('wrap');
+  function scaleGame(){
+    var avail=Math.min(window.innerWidth, document.documentElement.clientWidth);
+    var scale=avail>=GAME_W ? 1 : avail/GAME_W;
+    shell.style.transform='scale('+scale+')';
+    shell.style.marginBottom=scale<1 ? (580*(scale-1))+'px' : '0';
+    wrap.style.width=(GAME_W*scale)+'px';
+  }
+  scaleGame();
+  window.addEventListener('resize', scaleGame);
+  window.addEventListener('orientationchange', function(){ setTimeout(scaleGame,200); });
+})();
 </script>
 </body>
 </html>
