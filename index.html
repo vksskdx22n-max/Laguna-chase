@@ -10,7 +10,7 @@
 body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
   display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
   min-height:100vh;overflow-y:auto;overflow-x:hidden;user-select:none;}
-#wrap{display:flex;flex-direction:column;align-items:center;gap:3px;width:1100px;max-width:100vw;}
+#wrap{display:flex;flex-direction:column;align-items:center;gap:3px;width:100%;max-width:1100px;}
 #title{font-size:14px;color:#f4d03f;text-shadow:0 0 16px #f4d03f,0 0 32px #ff8c00;
   text-align:center;line-height:1.8;animation:blink 2s ease-in-out infinite;padding:2px 0;}
 #title small{display:block;font-size:9px;color:#00e5ff;margin-top:1px;}
@@ -27,7 +27,7 @@ body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
 .zs.on{border-color:#00e5ff;color:#00e5ff;animation:zp .8s alternate infinite;}
 .zs.ok{border-color:#00ff88;color:#00ff88;}
 @keyframes zp{from{background:rgba(0,229,255,.04)}to{background:rgba(0,229,255,.22)}}
-#gc{border:2px solid #00e5ff;box-shadow:0 0 24px rgba(0,229,255,.35);display:block;cursor:crosshair;}
+#gc{border:2px solid #00e5ff;box-shadow:0 0 24px rgba(0,229,255,.35);display:block;cursor:crosshair;width:100%;height:auto;}
 #infobox{width:100%;padding:3px 12px;background:rgba(0,0,20,.92);border:1px solid rgba(0,229,255,.22);
   font-size:10px;color:#fff;display:flex;flex-direction:row;align-items:center;gap:0;flex-wrap:nowrap;overflow:hidden;white-space:nowrap;}
 .in{color:#00e5ff;font-size:11px;flex-shrink:0;}
@@ -55,7 +55,7 @@ body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
 </head>
 <body>
 <div id="wrap">
-  <div id="title">🎣 LAGUNA CHASE 🎣<br>ENNIO E SANDRO A CACCIA DEL BRANZINO PERDUTO
+  <div id="title">🎣 LAGUNA CHASE 🎣<br>ENNIO A CACCIA DEL BRANZINO PERDUTO
     <small>Laguna di Venezia — Arcade 1986</small></div>
   <div id="hud">
     <div class="hb"><div class="hl">PUNTI</div><div class="hv" id="sc">000000</div></div>
@@ -74,12 +74,12 @@ body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
     <div class="zs"    id="z2">⛽ C.PETROLI</div>
     <div class="zs"    id="z3">🌊 C.MELISON</div>
   </div>
-  <div style="position:relative;width:1100px;max-width:100vw;">
-    <canvas id="gc" width="1100" height="580"></canvas>
+  <div style="position:relative;width:100%;max-width:1100px;">
+    <canvas id="gc"></canvas>
 
     <div class="ov" id="ovStart">
       <div class="ot" style="color:#f4d03f">🎣 LAGUNA CHASE 🎣<br>
-        <span style="font-size:9px;color:#00e5ff">ENNIO E SANDRO A CACCIA DEL BRANZINO PERDUTO</span></div>
+        <span style="font-size:9px;color:#00e5ff">ENNIO A CACCIA DEL BRANZINO PERDUTO</span></div>
       <div class="od">
         Naviga i canali della laguna veneziana!<br>
         Mangia tutti i <b style="color:#4488ff">GRANCHI BLU</b> invasivi nei canali.<br>
@@ -87,7 +87,7 @@ body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
         I <b style="color:#ffdd00">GRANCHI DORATI</b> spaventano le <b style="color:#ff88ff">MEDUSE</b> per 6 secondi!
       </div>
       <button class="btn" id="bStart">► LANCIA IL JERK ◄</button>
-      <div style="font-size:10px;color:rgba(0,229,255,.5)">FRECCE / WASD — TRACKPAD 2 DITA — DRAG MOUSE — TOUCH</div>
+      <div style="font-size:10px;color:rgba(0,229,255,.5)">SWIPE sul video — FRECCE / WASD — TRACKPAD 2 DITA</div>
     </div>
     <div class="ov" id="ovGO" style="display:none">
       <div class="ot" style="color:#ff6b35">IL BRANZINO E SCAPPATO! 🐟</div>
@@ -98,7 +98,7 @@ body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
     </div>
     <div class="ov" id="ovWin" style="display:none">
       <div class="ot" style="color:#00ff88">🎣 BRANZINO PRESO! 🎣</div>
-      <div class="od">Ennio e Sandro ce l'hanno fatta!<br>
+      <div class="od">Ennio ce l'ha fatta!<br>
         <b style="color:#f4d03f">La spigola puo vivere fino a 15 anni!</b></div>
       <div class="sc" id="scWin"></div>
       <button class="btn" id="bWin">► PESCA ANCORA ◄</button>
@@ -123,17 +123,7 @@ body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
     <div style="color:rgba(255,255,255,.3);padding:0 8px;flex-shrink:0;">|</div>
     <div class="it" id="iTip">💡 Il granchio blu e una specie invasiva arrivata dall'Atlantico!</div>
   </div>
-  <div id="tc">
-    <div style="display:flex;gap:9px;">
-      <button class="tb" id="tcL">◀<span>SX</span></button>
-      <button class="tb" id="tcR">▶<span>DX</span></button>
-    </div>
-    <div style="font-size:7px;color:rgba(0,229,255,.35);text-align:center;line-height:2;">PC<br>FRECCE<br>WASD<br>TRACKPAD</div>
-    <div style="display:flex;gap:9px;">
-      <button class="tb" id="tcU">▲<span>SU</span></button>
-      <button class="tb" id="tcD">▼<span>GIU</span></button>
-    </div>
-  </div>
+
 </div>
 
 <div id="rot" style="display:none;position:fixed;inset:0;z-index:99999;background:#000c1a;
@@ -354,16 +344,29 @@ var ZONES=[
 ];
 
 /* =====================================================
-   CANVAS & TILE SIZES
+   CANVAS & TILE SIZES — responsive
    ===================================================== */
-var CW=1100,CH=580;
-var TW=CW/COLS;          // 50px
-var TH=(CH-48)/ROWS;     // ~41px
-var YOFF=48;
+var CW,CH,TW,TH,YOFF;
 
 var canvas=document.getElementById('gc');
 var ctx=canvas.getContext('2d');
-canvas.width=CW; canvas.height=CH;
+
+function resizeCanvas(){
+  var maxW=1100;
+  var availW=Math.min(window.innerWidth, maxW);
+  CW=Math.floor(availW);
+  CH=Math.round(CW*(580/1100));
+  YOFF=Math.round(CH*(48/580));
+  TW=CW/COLS;
+  TH=(CH-YOFF)/ROWS;
+  canvas.width=CW;
+  canvas.height=CH;
+}
+resizeCanvas();
+window.addEventListener('resize',function(){
+  resizeCanvas();
+  if(G&&(G.state==='idle'||G.state==='gameover'||G.state==='win'))draw();
+});
 
 function cx(c){return c*TW+TW/2;}
 function cy(r){return YOFF+r*TH+TH/2;}
@@ -1390,22 +1393,25 @@ document.addEventListener('wheel', function(e){
 
 /* un dito trackpad gestito dal canvas mousedown+mousemove sopra */
 
-/* TOUCH BUTTONS */
-function setupTB(id,dir){
-  var el=document.getElementById(id);if(!el)return;
-  function pr(e){
-    e.preventDefault();getAC();G.wantDir=dir;el.classList.add('on');
+/* SWIPE sul canvas */
+(function(){
+  var tx0=0,ty0=0;
+  canvas.addEventListener('touchstart',function(e){
+    e.preventDefault();
+    getAC();
+    tx0=e.touches[0].clientX;
+    ty0=e.touches[0].clientY;
     if(G.state==='paused')resumeZone();
-  }
-  function re(e){e.preventDefault();el.classList.remove('on');}
-  el.addEventListener('touchstart',pr,{passive:false});
-  el.addEventListener('touchend',re,{passive:false});
-  el.addEventListener('touchcancel',re,{passive:false});
-  el.addEventListener('mousedown',pr);
-  el.addEventListener('mouseup',re);
-  el.addEventListener('mouseleave',re);
-}
-setupTB('tcL',2);setupTB('tcR',0);setupTB('tcU',3);setupTB('tcD',1);
+  },{passive:false});
+  canvas.addEventListener('touchend',function(e){
+    e.preventDefault();
+    var dx=e.changedTouches[0].clientX-tx0;
+    var dy=e.changedTouches[0].clientY-ty0;
+    var ax=Math.abs(dx),ay=Math.abs(dy);
+    if(ax<8&&ay<8)return; // tap: ignora
+    G.wantDir=ax>=ay?(dx>0?0:2):(dy>0?1:3);
+  },{passive:false});
+})();
 
 function togglePause(){
   if(G.state==='play'){
