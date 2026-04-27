@@ -2,53 +2,163 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>LAGUNA CHASE v12</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
-  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
-  min-height:100vh;overflow:hidden;user-select:none;}
-#wrap{display:flex;flex-direction:column;align-items:center;gap:5px;width:1100px;transform-origin:top center;}
-#title{font-size:12px;color:#f4d03f;text-shadow:0 0 16px #f4d03f,0 0 32px #ff8c00;
-  text-align:center;line-height:2;animation:blink 2s ease-in-out infinite;padding:4px 0;}
-#title small{display:block;font-size:8px;color:#00e5ff;margin-top:2px;}
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+body{
+  background:#000c1a;
+  font-family:'Press Start 2P',monospace;
+  color:#00e5ff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  user-select:none;
+  -webkit-user-select:none;
+  touch-action:manipulation;
+}
+#wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:2px;
+  width:100%;
+  max-width:1100px;
+  transform-origin:top center;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+#title{
+  font-size:10px;
+  color:#f4d03f;
+  text-shadow:0 0 16px #f4d03f,0 0 32px #ff8c00;
+  text-align:center;
+  line-height:1.8;
+  animation:blink 2s ease-in-out infinite;
+  padding:2px 0;
+}
+#title small{display:block;font-size:7px;color:#00e5ff;margin-top:1px;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.72}}
-#hud{display:flex;justify-content:space-between;align-items:center;width:100%;
-  padding:5px 14px;background:rgba(0,180,216,.06);border:1px solid rgba(0,229,255,.25);}
-.hb{display:flex;flex-direction:column;gap:3px;}
-.hl{color:rgba(0,229,255,.55);font-size:7px;}
-.hv{color:#f4d03f;font-size:11px;}
-#lv{color:#ff6b35;font-size:13px;}
-#zbar{width:100%;display:flex;gap:3px;}
-.zs{flex:1;height:20px;display:flex;align-items:center;justify-content:center;font-size:7px;
-  border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.3);background:rgba(0,0,0,.5);}
+#hud{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+  padding:3px 8px;
+  background:rgba(0,180,216,.06);
+  border:1px solid rgba(0,229,255,.25);
+}
+.hb{display:flex;flex-direction:column;gap:1px;}
+.hl{color:rgba(0,229,255,.55);font-size:6px;}
+.hv{color:#f4d03f;font-size:9px;}
+#lv{color:#ff6b35;font-size:11px;}
+#zbar{
+  width:100%;
+  display:flex;
+  gap:2px;
+}
+.zs{
+  flex:1;
+  height:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:6px;
+  border:1px solid rgba(255,255,255,.1);
+  color:rgba(255,255,255,.3);
+  background:rgba(0,0,0,.5);
+}
 .zs.on{border-color:#00e5ff;color:#00e5ff;animation:zp .8s alternate infinite;}
 .zs.ok{border-color:#00ff88;color:#00ff88;}
 @keyframes zp{from{background:rgba(0,229,255,.04)}to{background:rgba(0,229,255,.22)}}
-#gc{border:2px solid #00e5ff;box-shadow:0 0 24px rgba(0,229,255,.35);display:block;cursor:crosshair;}
-#infobox{width:100%;padding:6px 12px;background:rgba(0,0,20,.92);border:1px solid rgba(0,229,255,.22);
-  font-size:8px;line-height:2.1;color:#fff;display:flex;flex-direction:column;gap:3px;}
-.in{color:#00e5ff;font-size:9px;}
-.it{color:#f4d03f;font-size:7px;}
-.ov{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,6,20,.96);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:16px;z-index:100;text-align:center;padding:20px;}
-.ot{font-size:15px;text-shadow:0 0 18px currentColor;animation:blink 1.4s infinite;line-height:2;}
-.od{font-size:8px;color:rgba(255,255,255,.85);line-height:2.5;max-width:640px;}
-.sc{font-size:15px;color:#f4d03f;text-shadow:0 0 12px #f4d03f;}
-.btn{font-family:'Press Start 2P',monospace;font-size:11px;padding:14px 28px;
-  background:transparent;border:2px solid #00e5ff;color:#00e5ff;cursor:pointer;
-  text-shadow:0 0 8px #00e5ff;animation:blink 1s step-end infinite;}
+#gc{
+  border:2px solid #00e5ff;
+  box-shadow:0 0 24px rgba(0,229,255,.35);
+  display:block;
+  cursor:crosshair;
+  width:100%;
+  height:auto;
+  aspect-ratio:1100/580;
+}
+#infobox{
+  width:100%;
+  padding:3px 8px;
+  background:rgba(0,0,20,.92);
+  border:1px solid rgba(0,229,255,.22);
+  font-size:7px;
+  line-height:1.8;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+}
+.in{color:#00e5ff;font-size:7px;}
+.it{color:#f4d03f;font-size:6px;}
+.ov{
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  background:rgba(0,6,20,.96);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  z-index:100;
+  text-align:center;
+  padding:10px;
+}
+.ot{font-size:12px;text-shadow:0 0 18px currentColor;animation:blink 1.4s infinite;line-height:1.8;}
+.od{font-size:7px;color:rgba(255,255,255,.85);line-height:2;max-width:90%;}
+.sc{font-size:12px;color:#f4d03f;text-shadow:0 0 12px #f4d03f;}
+.btn{
+  font-family:'Press Start 2P',monospace;
+  font-size:10px;
+  padding:12px 20px;
+  background:transparent;
+  border:2px solid #00e5ff;
+  color:#00e5ff;
+  cursor:pointer;
+  text-shadow:0 0 8px #00e5ff;
+  animation:blink 1s step-end infinite;
+}
 .btn:hover,.btn:active{background:rgba(0,229,255,.18);}
-#tc{width:100%;display:flex;justify-content:space-between;align-items:center;
-  padding:7px 14px;background:rgba(0,0,0,.55);border:1px solid rgba(0,229,255,.12);}
-.tb{font-family:'Press Start 2P',monospace;font-size:20px;width:76px;height:76px;
-  background:rgba(0,229,255,.07);border:2px solid rgba(0,229,255,.4);color:#00e5ff;
-  border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:3px;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
-.tb span{font-size:7px;opacity:.7;}
+#tc{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:3px 8px;
+  background:rgba(0,0,0,.55);
+  border:1px solid rgba(0,229,255,.12);
+}
+.tb{
+  font-family:'Press Start 2P',monospace;
+  font-size:16px;
+  width:60px;
+  height:60px;
+  background:rgba(0,229,255,.07);
+  border:2px solid rgba(0,229,255,.4);
+  color:#00e5ff;
+  border-radius:8px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:1px;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+.tb span{font-size:6px;opacity:.7;}
 .tb.on{background:rgba(0,229,255,.3);border-color:#00e5ff;}
 @keyframes rotA{0%{transform:rotate(0)}50%{transform:rotate(90deg)}100%{transform:rotate(0)}}
 </style>
@@ -63,9 +173,9 @@ body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
     <div class="hb"><div class="hl">GRANCHI</div><div class="hv" id="gc2">0/0</div></div>
     <div class="hb" style="align-items:flex-end"><div class="hl">RECORD</div><div class="hv" id="hi">000000</div></div>
     <div class="hb" style="align-items:flex-end">
-      <button onclick="togglePause()" style="font-family:'Press Start 2P',monospace;font-size:7px;
-        padding:5px 10px;background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.4);
-        color:#00e5ff;cursor:pointer;">⏸ P</button>
+      <button onclick="togglePause()" style="font-family:'Press Start 2P',monospace;font-size:6px;
+        padding:4px 8px;background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.4);
+        color:#00e5ff;cursor:pointer;">⏸</button>
     </div>
   </div>
   <div id="zbar">
@@ -74,12 +184,12 @@ body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
     <div class="zs"    id="z2">⛽ C.PETROLI</div>
     <div class="zs"    id="z3">🌊 C.MELISON</div>
   </div>
-  <div style="position:relative;width:1100px;max-width:100vw;">
+  <div style="position:relative;width:100%;max-width:1100px;">
     <canvas id="gc" width="1100" height="580"></canvas>
 
     <div class="ov" id="ovStart">
       <div class="ot" style="color:#f4d03f">🎣 LAGUNA CHASE 🎣<br>
-        <span style="font-size:9px;color:#00e5ff">ENNIO E SANDRO A CACCIA DEL BRANZINO PERDUTO</span></div>
+        <span style="font-size:8px;color:#00e5ff">ENNIO E SANDRO A CACCIA DEL BRANZINO PERDUTO</span></div>
       <div class="od">
         Naviga i canali della laguna veneziana!<br>
         Mangia tutti i <b style="color:#4488ff">GRANCHI BLU</b> invasivi nei canali.<br>
@@ -87,7 +197,7 @@ body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
         I <b style="color:#ffdd00">GRANCHI DORATI</b> spaventano le <b style="color:#ff88ff">MEDUSE</b> per 6 secondi!
       </div>
       <button class="btn" id="bStart">► CALA LA LENZA ◄</button>
-      <div style="font-size:7px;color:rgba(0,229,255,.5)">FRECCE / WASD — TRACKPAD 2 DITA — DRAG MOUSE — TOUCH</div>
+      <div style="font-size:6px;color:rgba(0,229,255,.5)">TOCCA IL CANVAS PER MUOVERTI<br>O USA I PULSANTI SOTTO</div>
     </div>
     <div class="ov" id="ovGO" style="display:none">
       <div class="ot" style="color:#ff6b35">IL BRANZINO E SCAPPATO! 🐟</div>
@@ -106,28 +216,28 @@ body{background:#000c1a;font-family:'Press Start 2P',monospace;color:#00e5ff;
     <div class="ov" id="ovZone" style="display:none">
       <div class="ot" id="ztName" style="color:#00e5ff"></div>
       <div class="od" id="ztDesc"></div>
-      <div style="font-size:8px;color:#00ff88;animation:blink .9s infinite">— PREMI UN TASTO PER CONTINUARE —</div>
+      <div style="font-size:7px;color:#00ff88;animation:blink .9s infinite">— PREMI UN TASTO PER CONTINUARE —</div>
     </div>
     <!-- PAUSA -->
     <div class="ov" id="ovPause" style="display:none">
       <div class="ot" style="color:#00e5ff">⏸ PAUSA</div>
       <div class="od">Il branzino aspetta...<br>
-        <b style="color:#f4d03f">Premi P o ESC per riprendere</b></div>
+        <b style="color:#f4d03f">Premi P o tocca per riprendere</b></div>
       <button class="btn" id="bPause">► RIPRENDI ◄</button>
     </div>
   </div>
   <div id="infobox">
     <div class="in" id="iName">⚓ MORANZANI — Acque calme!</div>
-    <div id="iDesc" style="font-size:8px;">Mangia i granchi blu poi acchiappa il branzino!</div>
+    <div id="iDesc" style="font-size:7px;">Mangia i granchi blu poi acchiappa il branzino!</div>
     <div class="it" id="iTip">💡 Il granchio blu e una specie invasiva arrivata dall'Atlantico!</div>
   </div>
   <div id="tc">
-    <div style="display:flex;gap:9px;">
+    <div style="display:flex;gap:4px;">
       <button class="tb" id="tcL">◀<span>SX</span></button>
       <button class="tb" id="tcR">▶<span>DX</span></button>
     </div>
-    <div style="font-size:7px;color:rgba(0,229,255,.35);text-align:center;line-height:2;">PC<br>FRECCE<br>WASD<br>TRACKPAD</div>
-    <div style="display:flex;gap:9px;">
+    <div style="font-size:6px;color:rgba(0,229,255,.35);text-align:center;line-height:1.5;">TOCCA<br>CANVAS</div>
+    <div style="display:flex;gap:4px;">
       <button class="tb" id="tcU">▲<span>SU</span></button>
       <button class="tb" id="tcD">▼<span>GIU</span></button>
     </div>
@@ -247,20 +357,6 @@ function sfxFishOn(){[300,420,560,740,940].forEach(function(f,i){beep(f,.12,'sin
    ===================================================== */
 var COLS=22, ROWS=13;
 
-/*
-  Legenda visiva (ogni char = 1 tile):
-  W = muro pieno
-  . = granchio blu (pellet)
-  o = granchio dorato (power pellet)
-  ' '= corridoio vuoto (zona centrale/pesce)
-
-  Tutte le mappe hanno:
-  - Bordo esterno tutto W
-  - Corridoi orizzontali e verticali che si attraversano
-  - Zona centrale aperta (righe 5-7) per il branzino
-  - 4 granchi dorati agli angoli interni
-*/
-
 var MAPS=[
 /* MORANZANI */
 [
@@ -361,7 +457,19 @@ var YOFF=48;
 
 var canvas=document.getElementById('gc');
 var ctx=canvas.getContext('2d');
-canvas.width=CW; canvas.height=CH;
+
+function resizeCanvas() {
+  var container = canvas.parentElement;
+  var containerWidth = container.clientWidth;
+  
+  // Mantieni le proporzioni 1100:580
+  canvas.style.width = containerWidth + 'px';
+  canvas.style.height = (containerWidth * (580/1100)) + 'px';
+  
+  // Il canvas interno rimane 1100x580 per il rendering
+  canvas.width = CW;
+  canvas.height = CH;
+}
 
 function cx(c){return c*TW+TW/2;}
 function cy(r){return YOFF+r*TH+TH/2;}
@@ -383,7 +491,6 @@ var G={
 /* =====================================================
    MAP PARSING
    ===================================================== */
-/* direzioni — definite QUI così il BFS in parseMap le trova */
 var DR=[0,1,0,-1], DC=[1,0,-1,0];
 
 function parseMap(z){
@@ -407,12 +514,9 @@ function parseMap(z){
     for(var r2=3;r2<=9;r2++)for(var c2=2;c2<COLS-2;c2++)
       if(!G.walls[r2][c2])G.fishSpots.push({r:r2,c:c2});
 
-  /* ── BFS: calcola celle raggiungibili dal punto (1,1) ──
-     Rimuove pellet e power irraggiungibili così il gioco
-     non si blocca mai su un granchio intrappolato.        */
+  /* ── BFS: calcola celle raggiungibili dal punto (1,1) ── */
   var visited=[];
   for(var r3=0;r3<ROWS;r3++){visited[r3]=[];for(var c3=0;c3<COLS;c3++)visited[r3][c3]=false;}
-  /* trova la prima cella libera come start */
   var sr=1,sc2=1;
   outer: for(var r4=1;r4<ROWS-1;r4++)for(var c4=1;c4<COLS-1;c4++)
     if(!G.walls[r4][c4]){sr=r4;sc2=c4;break outer;}
@@ -428,7 +532,6 @@ function parseMap(z){
       queue.push({r:nr,c:nc});
     }
   }
-  /* marca come già mangiati i pellet in celle non raggiungibili */
   for(var i=0;i<G.pellets.length;i++){
     var p=G.pellets[i];
     if(!visited[p.r][p.c]){p.eaten=true;G.totalP--;}
@@ -446,7 +549,6 @@ function isWall(r,c){
 
 /* =====================================================
    ENTITY — tile-snap movement
-   dir: 0=R 1=D 2=L 3=U
    ===================================================== */
 function makeEnt(r,c,spd){
   return {r:r,c:c,x:cx(c),y:cy(r),
@@ -456,7 +558,6 @@ function makeEnt(r,c,spd){
 
 function stepEnt(e,wantD){
   if(!e.moving){
-    /* try wantD first, then keep current dir */
     var opts=[wantD,e.dir];
     for(var i=0;i<opts.length;i++){
       var d=opts[i];
@@ -474,7 +575,6 @@ function stepEnt(e,wantD){
       e.r+=e.dr;e.c+=e.dc;
       e.x=cx(e.c);e.y=cy(e.r);
       e.moving=false;e.prog=0;
-      /* try wantD immediately on arrival */
       if(!isWall(e.r+DR[wantD],e.c+DC[wantD])){
         e.dir=wantD;e.dr=DR[wantD];e.dc=DC[wantD];
         e.moving=true;e.prog=0;
@@ -587,7 +687,6 @@ function updateFish(){
     G.fish.x=Math.max(TW,Math.min(CW-TW,G.fish.x));
     G.fish.y=Math.max(YOFF+TH,Math.min(CH-TH,G.fish.y));
   }
-  // timer scaduto: il pesce scappa e ricompare altrove, NON cambia zona
   if(G.fish.timer<=0){
     G.fish.on=false;
     setTimeout(function(){ if(G.state==='play') spawnFish(); }, 1200);
@@ -595,35 +694,73 @@ function updateFish(){
 }
 
 /* =====================================================
-   MOUSE/TOUCH on CANVAS — swipe relativo
+   MOUSE/TOUCH on CANVAS — swipe relativo con coordinate canvas
    ===================================================== */
 var _sx=0,_sy=0,_sLock=false;
 
-function swipeStart(x,y){ _sx=x; _sy=y; _sLock=false; }
-function swipeMove(x,y){
-  if(_sLock) return;
-  var dx=x-_sx, dy=y-_sy;
-  if(Math.abs(dx)<18 && Math.abs(dy)<18) return;
-  if(G.state==='paused') resumeZone();
-  getAC();
-  G.wantDir = Math.abs(dx)>=Math.abs(dy) ? (dx>0?0:2) : (dy>0?1:3);
-  _sLock=true;
+function getCanvasCoords(clientX, clientY) {
+  var rect = canvas.getBoundingClientRect();
+  var scaleX = CW / rect.width;   // rapporto canvas interno / dimensione visualizzata
+  var scaleY = CH / rect.height;
+  return {
+    x: (clientX - rect.left) * scaleX,
+    y: (clientY - rect.top) * scaleY
+  };
 }
 
-canvas.addEventListener('mousedown', function(e){ getAC(); swipeStart(e.clientX,e.clientY); if(G.state==='paused')resumeZone(); });
-canvas.addEventListener('mousemove', function(e){ if(!_sLock) swipeMove(e.clientX,e.clientY); });
-canvas.addEventListener('mouseup',   function(){ _sLock=false; });
-canvas.addEventListener('mouseleave',function(){ _sLock=false; });
+function swipeStart(clientX, clientY){
+  var coords = getCanvasCoords(clientX, clientY);
+  _sx = coords.x;
+  _sy = coords.y;
+  _sLock = false;
+}
+function swipeMove(clientX, clientY){
+  if(_sLock) return;
+  var coords = getCanvasCoords(clientX, clientY);
+  var dx = coords.x - _sx;
+  var dy = coords.y - _sy;
+  if(Math.abs(dx) < 18 && Math.abs(dy) < 18) return;
+  if(G.state=='paused') resumeZone();
+  getAC();
+  // Invertito: swipe verso destra = il giocatore va a destra (dir 0)
+  // swipe verso sinistra = il giocatore va a sinistra (dir 2)
+  G.wantDir = Math.abs(dx) >= Math.abs(dy) ? (dx > 0 ? 0 : 2) : (dy > 0 ? 1 : 3);
+  _sLock = true;
+}
 
-canvas.addEventListener('touchstart',function(e){
-  e.preventDefault(); getAC();
-  swipeStart(e.touches[0].clientX,e.touches[0].clientY);
-  if(G.state==='paused')resumeZone();
-},{passive:false});
-canvas.addEventListener('touchmove',function(e){
-  e.preventDefault(); swipeMove(e.touches[0].clientX,e.touches[0].clientY);
-},{passive:false});
-canvas.addEventListener('touchend',function(){ _sLock=false; },{passive:false});
+canvas.addEventListener('mousedown', function(e){
+  getAC();
+  swipeStart(e.clientX, e.clientY);
+  if(G.state=='paused') resumeZone();
+});
+canvas.addEventListener('mousemove', function(e){
+  if(e.buttons === 1) { // solo se il mouse è premuto
+    swipeMove(e.clientX, e.clientY);
+  }
+});
+canvas.addEventListener('mouseup', function(){ _sLock = false; });
+canvas.addEventListener('mouseleave', function(){ _sLock = false; });
+
+canvas.addEventListener('touchstart', function(e){
+  e.preventDefault();
+  getAC();
+  var touch = e.touches[0];
+  swipeStart(touch.clientX, touch.clientY);
+  if(G.state=='paused') resumeZone();
+}, {passive: false});
+
+canvas.addEventListener('touchmove', function(e){
+  e.preventDefault();
+  var touch = e.touches[0];
+  swipeMove(touch.clientX, touch.clientY);
+}, {passive: false});
+
+canvas.addEventListener('touchend', function(e){ 
+  e.preventDefault();
+  _sLock = false; 
+}, {passive: false});
+
+canvas.addEventListener('touchcancel', function(){ _sLock = false; });
 
 /* =====================================================
    UPDATE
@@ -687,7 +824,7 @@ function update(){
     }
   }
 
-  /* medusa collision — distanza pixel, sempre affidabile */
+  /* medusa collision */
   if(G.player.invTimer===0){
     for(var i=0;i<G.meduse.length;i++){
       var m=G.meduse[i];if(m.eaten)continue;
@@ -739,22 +876,19 @@ function addFloat(x,y,txt,col){G.floats.push({x:x,y:y,txt:txt,col:col,life:1});}
    ===================================================== */
 function drawBG(){
   var z=G.zone;
-  // Gradienti cielo/acqua diversi per zona
   var sg=ctx.createLinearGradient(0,0,0,CH);
-  if(z===0){// MORANZANI — acqua verde-azzurra, calma
+  if(z===0){
     sg.addColorStop(0,'#001c2e');sg.addColorStop(1,'#003322');
-  } else if(z===1){// SAN LEONARDO — verde canneto, torbido
+  } else if(z===1){
     sg.addColorStop(0,'#001a10');sg.addColorStop(1,'#0a2a0a');
-  } else if(z===2){// CANALE PETROLI — scuro, quasi nero con riflessi arancio
+  } else if(z===2){
     sg.addColorStop(0,'#0a0800');sg.addColorStop(1,'#1a0a00');
-  } else {// CANALE MELISON — notte, blu profondo
+  } else {
     sg.addColorStop(0,'#000510');sg.addColorStop(1,'#000820');
   }
   ctx.fillStyle=sg; ctx.fillRect(0,0,CW,CH);
 
-  // Elementi di sfondo specifici per zona
   if(z===0){
-    // MORANZANI: briccole veneziane in lontananza
     ctx.globalAlpha=0.13;
     for(var b=0;b<6;b++){
       var bx=80+b*175, by=YOFF+20;
@@ -765,39 +899,33 @@ function drawBG(){
       ctx.fillRect(bx-8,by-5,26,12);
     }
     ctx.globalAlpha=1;
-    // Onde calme
     ctx.strokeStyle='rgba(0,180,180,.06)'; ctx.lineWidth=1.5;
     for(var i=0;i<12;i++){
       var yo=Math.sin(G.frame*.015+i*.8)*4;
       ctx.beginPath();ctx.moveTo(0,YOFF+30+i*44+yo);ctx.lineTo(CW,YOFF+34+i*44+yo);ctx.stroke();
     }
   } else if(z===1){
-    // SAN LEONARDO: canneti ai lati
     ctx.globalAlpha=0.18;
     for(var c=0;c<18;c++){
       var cx2=c*62+Math.sin(c*1.7)*15;
       var sway=Math.sin(G.frame*.02+c*.5)*3;
       ctx.strokeStyle='#2a5a10'; ctx.lineWidth=3+Math.random()*2;
       ctx.beginPath();ctx.moveTo(cx2,CH);ctx.lineTo(cx2+sway,YOFF+40+Math.sin(c)*30);ctx.stroke();
-      // foglie
       ctx.fillStyle='#1a4008';
       ctx.beginPath();ctx.ellipse(cx2+sway,YOFF+50+Math.sin(c)*25,4,14,sway*.05,0,Math.PI*2);ctx.fill();
     }
     ctx.globalAlpha=1;
-    // Acqua torbida con riflessi verdi
     ctx.strokeStyle='rgba(0,100,30,.07)'; ctx.lineWidth=1;
     for(var i=0;i<14;i++){
       var yo=Math.sin(G.frame*.02+i*.6)*3;
       ctx.beginPath();ctx.moveTo(0,YOFF+25+i*38+yo);ctx.lineTo(CW,YOFF+28+i*38+yo);ctx.stroke();
     }
   } else if(z===2){
-    // CANALE PETROLI: ciminiere Marghera sullo sfondo
     ctx.globalAlpha=0.2;
     var chimneys=[[60,CH*.3],[220,CH*.15],[400,CH*.25],[600,CH*.18],[820,CH*.22],[1000,CH*.12]];
     chimneys.forEach(function(ch){
       ctx.fillStyle='#1a0800';
       ctx.fillRect(ch[0]-8,ch[1],16,CH-ch[1]);
-      // fumo
       ctx.fillStyle='rgba(80,60,40,.3)';
       for(var s=0;s<4;s++){
         var sy=ch[1]-s*18-((G.frame*.8+s*15)%80);
@@ -806,21 +934,17 @@ function drawBG(){
       }
     });
     ctx.globalAlpha=1;
-    // Riflessi petrolio arancio-iridescenti
     ctx.strokeStyle='rgba(180,80,0,.05)'; ctx.lineWidth=2;
     for(var i=0;i<10;i++){
       var yo=Math.sin(G.frame*.012+i*.9)*3;
       ctx.beginPath();ctx.moveTo(0,YOFF+40+i*50+yo);ctx.lineTo(CW,YOFF+44+i*50+yo);ctx.stroke();
     }
   } else {
-    // CANALE MELISON: notte stellata, luna
     ctx.globalAlpha=0.6;
-    // Luna
     ctx.fillStyle='rgba(255,255,220,.9)';
     ctx.shadowColor='rgba(255,255,180,.5)'; ctx.shadowBlur=20;
     ctx.beginPath();ctx.arc(CW-80,YOFF+35,18,0,Math.PI*2);ctx.fill();
     ctx.shadowBlur=0;
-    // Stelle
     ctx.fillStyle='rgba(255,255,255,.7)';
     var stars=[[50,20],[150,35],[300,15],[480,28],[650,10],[800,38],[950,22],[1050,30]];
     stars.forEach(function(s){
@@ -828,13 +952,11 @@ function drawBG(){
       ctx.fillRect(s[0],YOFF-28+s[1],tw,tw);
     });
     ctx.globalAlpha=1;
-    // Riflesso luna sull'acqua
     ctx.strokeStyle='rgba(255,255,180,.04)'; ctx.lineWidth=2;
     for(var i=0;i<12;i++){
       var yo=Math.sin(G.frame*.018+i*.7)*4;
       ctx.beginPath();ctx.moveTo(CW-120,YOFF+20+i*45+yo);ctx.lineTo(CW-40,YOFF+24+i*45+yo);ctx.stroke();
     }
-    // Onde notturne
     ctx.strokeStyle='rgba(0,60,120,.07)'; ctx.lineWidth=1;
     for(var i=0;i<14;i++){
       var yo=Math.sin(G.frame*.016+i*.65)*3;
@@ -845,7 +967,6 @@ function drawBG(){
 
 function drawWalls(){
   var z=G.zone;
-  // colori muri per zona
   var wc=['#0a2a3a','#0a2a12','#1a0e00','#050818'][z];
   var ec=['#1a6a8a','#1a6a2a','#5a2a00','#1a2a5a'][z];
   for(var r=0;r<ROWS;r++){
@@ -857,26 +978,22 @@ function drawWalls(){
 
       var seed=(r*11+c*7);
       if(z===0){
-        // MORANZANI: alghe verdi + briccole
         if(seed%6===0){
           ctx.fillStyle='rgba(0,100,50,.6)';
           for(var a=0;a<3;a++) ctx.fillRect(px+5+a*12,py+TH-8,4,8);
         }
         if(seed%9===0){
-          // briccola veneziana
           ctx.fillStyle='#4a2800';ctx.fillRect(px+TW/2-4,py+2,8,TH-4);
           ctx.fillStyle='#5a3200';ctx.fillRect(px+TW/2-2,py+4,4,TH-8);
           ctx.fillStyle='#3a1800';ctx.fillRect(px+TW/2-6,py,12,6);
-          ctx.fillStyle='#ff6600';ctx.fillRect(px+TW/2-2,py+2,4,4); // cima arancione
+          ctx.fillStyle='#ff6600';ctx.fillRect(px+TW/2-2,py+2,4,4);
         }
         if(seed%15===0){
-          // granchio decorativo sullo sfondo
           ctx.globalAlpha=0.25; ctx.fillStyle='#cc3300';
           ctx.beginPath();ctx.arc(px+TW/2,py+TH/2,6,0,Math.PI*2);ctx.fill();
           ctx.globalAlpha=1;
         }
       } else if(z===1){
-        // SAN LEONARDO: canneti fitti
         if(seed%4===0){
           var sway=Math.sin(G.frame*.02+(r+c)*.4)*2;
           ctx.fillStyle='rgba(30,80,15,.7)';
@@ -887,7 +1004,6 @@ function drawWalls(){
           ctx.beginPath();ctx.ellipse(px+TW/2+sway,py+4,TW*.35,5,0,0,Math.PI*2);ctx.fill();
         }
         if(seed%8===0){
-          // radici di canna sott'acqua
           ctx.strokeStyle='rgba(20,60,10,.5)';ctx.lineWidth=1.5;
           for(var a=0;a<3;a++){
             ctx.beginPath();ctx.moveTo(px+8+a*14,py+TH);
@@ -895,26 +1011,22 @@ function drawWalls(){
           }
         }
       } else if(z===2){
-        // CANALE PETROLI: pareti cemento industriale con ruggine
         if(seed%3===0){
-          ctx.fillStyle='rgba(80,40,0,.4)'; // ruggine
+          ctx.fillStyle='rgba(80,40,0,.4)';
           ctx.fillRect(px+seed%TW,py+2,3+seed%6,TH-4);
         }
         if(seed%7===0){
-          // bulloni/rivetti
           ctx.fillStyle='rgba(60,50,30,.6)';
           ctx.beginPath();ctx.arc(px+8,py+8,3,0,Math.PI*2);ctx.fill();
           ctx.beginPath();ctx.arc(px+TW-8,py+TH-8,3,0,Math.PI*2);ctx.fill();
         }
         if(seed%12===0){
-          // boa segnaletica
           ctx.fillStyle='#cc4400';
           ctx.beginPath();ctx.arc(px+TW/2,py+TH/2,5,0,Math.PI*2);ctx.fill();
           ctx.fillStyle='#ffffff';
           ctx.fillRect(px+TW/2-1,py+TH/2-4,2,8);
         }
       } else {
-        // MELISON: muri scuri con alghe bioluminescenti
         if(seed%5===0){
           var glow=0.3+0.2*Math.sin(G.frame*.08+seed*.3);
           ctx.globalAlpha=glow;
@@ -924,7 +1036,6 @@ function drawWalls(){
           ctx.shadowBlur=0;ctx.globalAlpha=1;
         }
         if(seed%8===0){
-          // stelle marine fosforescenti
           ctx.globalAlpha=0.3;ctx.fillStyle='#ff88ff';
           ctx.shadowColor='#ff88ff';ctx.shadowBlur=6;
           ctx.beginPath();ctx.arc(px+TW/2,py+TH/2,4,0,Math.PI*2);ctx.fill();
@@ -970,27 +1081,20 @@ function drawPlayer(){
   var angs=[0,Math.PI/2,Math.PI,-Math.PI/2];
   ctx.rotate(angs[p.dir]);
   ctx.shadowColor='#00e5ff';ctx.shadowBlur=16;
-  /* scafo */
   ctx.fillStyle='#cc8833';ctx.fillRect(-16,-10,32,20);
   ctx.fillStyle='#aa6622';ctx.fillRect(-14,-8,28,16);
-  /* prua */
   ctx.fillStyle='#cc8833';
   ctx.beginPath();ctx.moveTo(16,-10);ctx.lineTo(26,0);ctx.lineTo(16,10);ctx.closePath();ctx.fill();
-  /* cabina */
   ctx.fillStyle='#ddeeff';ctx.fillRect(-9,-7,16,14);
   ctx.fillStyle='#aaccee';ctx.fillRect(-7,-6,12,12);
   ctx.fillStyle='#88bbff';ctx.fillRect(-6,-5,5,5);ctx.fillRect(2,-5,5,5);
-  /* nome */
   ctx.fillStyle='#ff4444';ctx.font='bold 5px sans-serif';ctx.textAlign='center';
   ctx.fillText('ENNIO',0,11);
-  /* motore */
   ctx.fillStyle='#444';ctx.fillRect(-15,-5,6,10);
   if(G.frame%5<3){ctx.fillStyle='rgba(200,230,255,.45)';ctx.fillRect(-21,-4,7,8);}
-  /* antenna */
   ctx.strokeStyle='#888';ctx.lineWidth=1.2;
   ctx.beginPath();ctx.moveTo(0,-7);ctx.lineTo(0,-18);ctx.stroke();
   ctx.fillStyle='#ff4444';ctx.fillRect(-2,-19,4,4);
-  /* lenza */
   if(G.fish.on){
     ctx.strokeStyle='rgba(255,215,0,.9)';ctx.lineWidth=2;ctx.setLineDash([4,4]);
     ctx.beginPath();ctx.moveTo(26,0);ctx.lineTo(48,0);ctx.stroke();ctx.setLineDash([]);
@@ -1004,7 +1108,6 @@ function drawMeduse(){
     ctx.save();ctx.translate(m.x,m.y);
     var bob=Math.sin(G.frame*.09+m.phase)*4;
     ctx.translate(0,bob);
-    /* colore spaventata: BLU ELETTRICO lampeggiante, ultimi 2s bianco */
     var col;
     if(m.frightened){
       var blink=(G.frTimer<120&&Math.floor(G.frame/6)%2===0);
@@ -1025,7 +1128,6 @@ function drawMeduse(){
       ctx.stroke();
     }
     ctx.globalAlpha=1;
-    /* occhi: X quando spaventata (mangiabile!), normali altrimenti */
     if(m.frightened){
       ctx.strokeStyle='#003366';ctx.lineWidth=2;
       ctx.beginPath();ctx.moveTo(-7,-7);ctx.lineTo(-3,-3);ctx.stroke();
@@ -1047,7 +1149,6 @@ function drawFish(){
   ctx.save(); ctx.translate(f.x,f.y+bob);
 
   if(G.zone===0){
-    // ── GRANCHIO BLU ──────────────────────────────────
     ctx.save(); if(f.dx<0) ctx.scale(-1,1);
     var walk=Math.sin(G.frame*.2)*2;
     ctx.shadowColor='#4488ff'; ctx.shadowBlur=18;
@@ -1076,9 +1177,7 @@ function drawFish(){
     ctx.beginPath();ctx.arc(-10,-12,2,0,Math.PI*2);ctx.fill();
     ctx.beginPath();ctx.arc(10,-12,2,0,Math.PI*2);ctx.fill();
     ctx.restore();
-
   } else if(G.zone===1){
-    // ── ORATA ─────────────────────────────────────────
     ctx.save(); if(f.dx<0) ctx.scale(-1,1);
     ctx.shadowColor='#ffdd44'; ctx.shadowBlur=20;
     ctx.fillStyle='#c8a830';
@@ -1106,9 +1205,7 @@ function drawFish(){
     ctx.fillStyle='#111';ctx.beginPath();ctx.arc(-10.5,-4,2,0,Math.PI*2);ctx.fill();
     ctx.fillStyle='rgba(255,255,255,.8)';ctx.beginPath();ctx.arc(-9.5,-5,1,0,Math.PI*2);ctx.fill();
     ctx.restore();
-
   } else if(G.zone===2){
-    // ── POLPO ─────────────────────────────────────────
     ctx.save();
     var tentWave=G.frame*.1;
     ctx.shadowColor='#aa44ff'; ctx.shadowBlur=22;
@@ -1142,9 +1239,7 @@ function drawFish(){
     ctx.beginPath();ctx.arc(-7,-10,2.5,0,Math.PI*2);ctx.fill();
     ctx.beginPath();ctx.arc(7,-10,2.5,0,Math.PI*2);ctx.fill();
     ctx.restore();
-
   } else {
-    // ── BRANZINO (originale) ──────────────────────────
     ctx.save(); if(f.dx<0) ctx.scale(-1,1);
     ctx.shadowColor='#88ccff'; ctx.shadowBlur=20;
     ctx.fillStyle='#7799bb';
@@ -1197,13 +1292,13 @@ function drawFish(){
   }
   ctx.shadowBlur=0; ctx.restore();
 }
+
 function drawTopStrip(){
   var z=ZONES[G.zone];
   ctx.fillStyle='rgba(0,0,15,.92)';ctx.fillRect(0,0,CW,YOFF);
   ctx.fillStyle=z.col;ctx.font='bold 9px "Press Start 2P"';ctx.textAlign='left';
   ctx.shadowColor=z.col;ctx.shadowBlur=8;
   ctx.fillText('SPOT: '+z.name,10,32);ctx.shadowBlur=0;
-  /* progress bar */
   var prog=G.totalP>0?G.eatenP/G.totalP:0;
   ctx.fillStyle='rgba(0,0,0,.5)';ctx.fillRect(240,14,200,14);
   ctx.fillStyle='#4488ff';ctx.fillRect(240,14,200*prog,14);
@@ -1211,7 +1306,6 @@ function drawTopStrip(){
   ctx.fillStyle='#fff';ctx.font='bold 7px "Press Start 2P"';
   var fishNames=['GRANCHIO BLU!','ORATA!','POLPO!','BRANZINO BOSS!'];
   ctx.fillText(G.fish.on?'ACCHIAPPA IL '+fishNames[G.zone]:'GRANCHI: '+G.eatenP+'/'+G.totalP,242,32);
-  /* frightened — messaggio grande e lampeggiante */
   if(G.frTimer>0){
     ctx.save();
     ctx.font='bold 8px "Press Start 2P"';
@@ -1222,7 +1316,6 @@ function drawTopStrip(){
     ctx.fillText('⭐ MEDUSE BLU — MANGIALE! '+Math.ceil(G.frTimer/60)+'s',CW/2,32);
     ctx.restore();
   }
-  /* fish distance */
   if(G.fish.on){
     var dx=G.player.x-G.fish.x,dy=G.player.y-G.fish.y;
     var fd=Math.round(Math.sqrt(dx*dx+dy*dy));
@@ -1255,7 +1348,7 @@ function drawEffects(){
 
 function draw(){
   ctx.clearRect(0,0,CW,CH);
-  if(G.state==='play'){
+  if(G.state=='play'){
     drawBG();drawWalls();drawPellets();
     drawFish();drawMeduse();drawPlayer();
     drawEffects();drawTopStrip();
@@ -1349,28 +1442,27 @@ function setInfo(z){
    ===================================================== */
 document.addEventListener('keydown',function(e){
   getAC();
-  if(e.key==='ArrowRight'||e.key==='d'||e.key==='D')G.wantDir=0;
-  else if(e.key==='ArrowDown' ||e.key==='s'||e.key==='S')G.wantDir=1;
-  else if(e.key==='ArrowLeft' ||e.key==='a'||e.key==='A')G.wantDir=2;
-  else if(e.key==='ArrowUp'   ||e.key==='w'||e.key==='W')G.wantDir=3;
-  /* PAUSA */
-  else if((e.key==='p'||e.key==='P'||e.key==='Escape')&&G.state==='play'){
+  if(e.key=='ArrowRight'||e.key=='d'||e.key=='D')G.wantDir=0;
+  else if(e.key=='ArrowDown' ||e.key=='s'||e.key=='S')G.wantDir=1;
+  else if(e.key=='ArrowLeft' ||e.key=='a'||e.key=='A')G.wantDir=2;
+  else if(e.key=='ArrowUp'   ||e.key=='w'||e.key=='W')G.wantDir=3;
+  else if((e.key=='p'||e.key=='P'||e.key=='Escape')&&G.state=='play'){
     G.state='paused2'; stopAllAudio();
     document.getElementById('ovPause').style.display='flex';
-  } else if((e.key==='p'||e.key==='P'||e.key==='Escape'||e.key===' ')&&G.state==='paused2'){
+  } else if((e.key=='p'||e.key=='P'||e.key=='Escape'||e.key==' ')&&G.state=='paused2'){
     document.getElementById('ovPause').style.display='none';
     G.state='play'; getAC(); startAllAudio();
   }
   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].indexOf(e.key)>=0)e.preventDefault();
-  if(G.state==='paused')resumeZone();
+  if(G.state=='paused')resumeZone();
 });
 
-/* ── TRACKPAD due dita — su document, funziona ovunque ── */
+/* ── TRACKPAD due dita — su document ── */
 var _wAccX=0, _wAccY=0, _wCooldown=false;
 document.addEventListener('wheel', function(e){
   e.preventDefault();
   if(_wCooldown) return;
-  if(G.state==='paused') resumeZone();
+  if(G.state=='paused') resumeZone();
   getAC();
   _wAccX += e.deltaX;
   _wAccY += e.deltaY;
@@ -1382,14 +1474,12 @@ document.addEventListener('wheel', function(e){
   setTimeout(function(){ _wCooldown=false; _wAccX=0; _wAccY=0; }, 250);
 },{passive:false});
 
-/* un dito trackpad gestito dal canvas mousedown+mousemove sopra */
-
 /* TOUCH BUTTONS */
 function setupTB(id,dir){
   var el=document.getElementById(id);if(!el)return;
   function pr(e){
     e.preventDefault();getAC();G.wantDir=dir;el.classList.add('on');
-    if(G.state==='paused')resumeZone();
+    if(G.state=='paused')resumeZone();
   }
   function re(e){e.preventDefault();el.classList.remove('on');}
   el.addEventListener('touchstart',pr,{passive:false});
@@ -1402,10 +1492,10 @@ function setupTB(id,dir){
 setupTB('tcL',2);setupTB('tcR',0);setupTB('tcU',3);setupTB('tcD',1);
 
 function togglePause(){
-  if(G.state==='play'){
+  if(G.state=='play'){
     G.state='paused2'; stopAllAudio();
     document.getElementById('ovPause').style.display='flex';
-  } else if(G.state==='paused2'){
+  } else if(G.state=='paused2'){
     document.getElementById('ovPause').style.display='none';
     G.state='play'; getAC(); startAllAudio();
   }
@@ -1434,48 +1524,44 @@ document.getElementById('bWin').addEventListener('touchend',function(e){e.preven
 })();
 
 /* =====================================================
+   RESIZE OBSERVER per il canvas
+   ===================================================== */
+function onResize() {
+  resizeCanvas();
+}
+window.addEventListener('resize', onResize);
+window.addEventListener('orientationchange', function() {
+  setTimeout(onResize, 100);
+});
+
+/* =====================================================
+   Impedisci scroll e zoom su iOS
+   ===================================================== */
+document.addEventListener('gesturestart', function(e) { e.preventDefault(); });
+document.addEventListener('gesturechange', function(e) { e.preventDefault(); });
+document.addEventListener('gestureend', function(e) { e.preventDefault(); });
+
+// Impedisci il doppio tap per zoom
+var lastTouchEnd = 0;
+document.addEventListener('touchend', function(e) {
+  var now = (new Date()).getTime();
+  if (now - lastTouchEnd <= 300) {
+    e.preventDefault();
+  }
+  lastTouchEnd = now;
+}, false);
+
+/* =====================================================
    BOOT
    ===================================================== */
 G.floats=[];G.ripples=[];G.sparks=[];G.meduse=[];
 G.pellets=[];G.powers=[];G.fishSpots=[];G.walls=[];
 for(var _r=0;_r<ROWS;_r++){G.walls[_r]=[];for(var _c=0;_c<COLS;_c++)G.walls[_r][_c]=false;}
 G.state='idle';
+
+// Inizializza il canvas al caricamento
+resizeCanvas();
 gameLoop();
-</script>
-<script>
-/* ── RESPONSIVE SCALING ── */
-var _scale=1;
-function applyScale(){
-  var wrap=document.getElementById('wrap');
-  var avail=window.innerWidth;
-  _scale=Math.min(1, avail/1100);
-  wrap.style.transformOrigin='top center';
-  wrap.style.transform='scale('+_scale+')';
-  // corregge spazio occupato nel DOM dopo scale
-  var h=wrap.offsetHeight;
-  wrap.style.marginBottom=((h*_scale)-h)+'px';
-  // nasconde tasti freccia su mobile (touch swipe sufficiente)
-  var tc=document.getElementById('tc');
-  if(tc) tc.style.display=(_scale<1)?'none':'flex';
-}
-applyScale();
-window.addEventListener('resize',applyScale);
-window.addEventListener('orientationchange',function(){ setTimeout(applyScale,200); });
-
-/* ── PATCH TOUCH COORDINATES: divide by scale ── */
-var _origTouchStart=canvas.ontouchstart;
-canvas.removeEventListener('touchstart',canvas.ontouchstart);
-canvas.removeEventListener('touchmove',canvas.ontouchmove);
-
-canvas.addEventListener('touchstart',function(e){
-  e.preventDefault(); getAC();
-  swipeStart(e.touches[0].clientX/_scale, e.touches[0].clientY/_scale);
-  if(G.state==='paused')resumeZone();
-},{passive:false});
-canvas.addEventListener('touchmove',function(e){
-  e.preventDefault();
-  swipeMove(e.touches[0].clientX/_scale, e.touches[0].clientY/_scale);
-},{passive:false});
 </script>
 </body>
 </html>
